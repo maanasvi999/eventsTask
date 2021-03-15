@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .like .material-icons{
+            color: red }
+        .unlike .material-icons{
+            color: white;   }
+    </style>
+    <body>
+        {% extends "main/header.html" %}
+        {% block content%}
+        <h3>Events</h3>
+        <div class="row">
+            {% for d in data %}
+            <div class="col s12 m8 l8">
+                <div class="card center">
+                    <div class="card-content" >
+                        <span class="card-title">{{d.event_name}}</span>
+                        <p>{{d.location}}</p>
+                        <p>{{d.date}}</p>
+                        <p>{{d.time}}</p>
+                        <img src="{{d.image.url}}" style="width:50%; height:50% ">
+                        <br/>
+                        <button type="submit" class="btn-floating black large like-btn unlike">
+                            <i class="material-icons">favorite</i>
+                        </button>
+                    </div>
+                </div>
+                <br/>
+            </div>
+           {% endfor %}
+        </div>
+        {% endblock%}
+    </body>
+    <script>
+        $(".like-btn").click(function() {
+            $(this).toggleClass("like unlike"); });
+    </script>
+</html>
